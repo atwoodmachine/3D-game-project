@@ -18,7 +18,7 @@ Entity *player_new(Vector3D position)
         slog("UGH OHHHH, no player for you!");
         return NULL;
     }
-    
+    ent->health = 100;
     ent->model = gf3d_model_load("models/dino.model");
     ent->think = player_think;
     ent->update = player_update;
