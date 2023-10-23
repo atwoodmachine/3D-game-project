@@ -66,6 +66,8 @@ int main(int argc,char *argv[])
     
     player = player_new(vector3d(0,0,0));
     if (player)player->selected = 1;
+    agu = agumon_new(vector3d(0, 0, 0));
+    if (agu)agu->selected = 1;
     w = world_load("config/testworld.json");
     
     SDL_SetRelativeMouseMode(SDL_TRUE);
