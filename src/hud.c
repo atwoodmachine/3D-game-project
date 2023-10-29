@@ -20,4 +20,23 @@ void draw_hud(Entity* player){
     gf2d_draw_rect_filled(gfc_rect(hpBarX + 5, hpBarY + 5, barLength, hpBarH - 20),gfc_color8(128,1,1,255));
     gf2d_font_draw_line_tag("Health",FT_Normal,gfc_color(1,1,1,1), vector2d(10,20));
     gf2d_font_draw_line_tag(health,FT_Normal,gfc_color(1,1,1,1), vector2d(200,20));
+
+    //draw currently equipped weapon
+    switch(player->weapon){
+        case revolver:
+            gf2d_font_draw_line_tag("Revolver:",FT_Normal,gfc_color(1,1,1,1), vector2d(10,50));
+            break;
+        case repeater:
+            gf2d_font_draw_line_tag("Repeater:",FT_Normal,gfc_color(1,1,1,1), vector2d(10,50));
+            break;
+        case shotgun:
+            gf2d_font_draw_line_tag("Shotgun:",FT_Normal,gfc_color(1,1,1,1), vector2d(10,50));
+            break;
+        case dynamite:
+            gf2d_font_draw_line_tag("Dynamite:",FT_Normal,gfc_color(1,1,1,1), vector2d(10,50));
+            break;
+        case throwing_knife:
+            gf2d_font_draw_line_tag("Throwing knives:",FT_Normal,gfc_color(1,1,1,1), vector2d(10,50));
+            break;
+    }
 }

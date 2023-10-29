@@ -1,0 +1,7 @@
+{
+    "model":
+    {
+        "model":"models/spaghetto/skully.obj",
+        "texture":"models/spaghetto/white.png"
+    }
+}

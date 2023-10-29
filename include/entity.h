@@ -15,6 +15,14 @@ typedef enum
     ES_attack
 }EntityState;
 
+typedef enum{
+    revolver = 0,
+    repeater,
+    shotgun,
+    dynamite,
+    throwing_knife
+}PlayerWeapon;
+
 
 typedef struct Entity_S
 {
@@ -48,6 +56,20 @@ typedef struct Entity_S
     Uint32      health;     /**<entity dies when it reaches zero*/
     // WHATEVER ELSE WE MIGHT NEED FOR ENTITIES
     struct Entity_S *target;    /**<entity to target for weapons / ai*/
+
+    //related to player loadout
+    PlayerWeapon weapon;
+    Uint32 revolverAmmo;
+    Uint32 repeaterAmmo;
+    Uint32 shotgunShells;
+    Uint32 sticksDynamite;
+    Uint32 throwingKnives;
+    
+    Uint32 revolverCap;
+    Uint32 repeaterCap;
+    Uint32 shotgunCap;
+    Uint32 dynamiteCap;
+    Uint32 knivesCap;
     
     void *customData;   /**<IF an entity needs to keep track of extra data, we can do it here*/
 }Entity;

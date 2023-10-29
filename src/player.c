@@ -19,13 +19,21 @@ Entity *player_new(Vector3D position)
         return NULL;
     }
     ent->health = 100;
-    ent->model = gf3d_model_load("models/dino.model");
+    ent->model = gf3d_model_load("models/spaghetto.model");
     ent->think = player_think;
     ent->update = player_update;
     vector3d_copy(ent->position,position);
     ent->rotation.x = -GFC_PI;
     ent->rotation.z = -GFC_HALF_PI;
-    ent->hidden = 1;
+    ent->hidden = 0;
+    //set up starting weapons
+    ent->weapon = revolver;
+    ent->revolverAmmo = 24;
+    ent->repeaterAmmo = 36;
+    ent->shotgunShells = 12;
+    ent->sticksDynamite = 3;
+    ent->throwingKnives = 5;
+
     return ent;
 }
 
@@ -79,6 +87,22 @@ void player_think(Entity *self)
     {
         thirdPersonMode = !thirdPersonMode;
         self->hidden = !self->hidden;
+    }
+
+    if(keys[SDL_SCANCODE_1]){
+        self->weapon = revolver;
+    }
+    if(keys[SDL_SCANCODE_2]){
+        self->weapon = repeater;
+    }
+    if(keys[SDL_SCANCODE_3]){
+        self->weapon = shotgun;
+    }
+    if(keys[SDL_SCANCODE_4]){
+        self->weapon = dynamite;
+    }
+    if(keys[SDL_SCANCODE_5]){
+        self->weapon = throwing_knife;
     }
 }
 
