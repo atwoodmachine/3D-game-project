@@ -10,5 +10,11 @@
  */
 Entity *player_new(Vector3D position);
 
+/**
+ * @brief Initializes weapon data (ammo, fire rate, etc)
+ * @param self is the player
+*/
+void init_weapon_data(Entity *self);
+
 
 #endif

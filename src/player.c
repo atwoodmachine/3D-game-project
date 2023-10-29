@@ -7,6 +7,7 @@
 static int thirdPersonMode = 0;
 void player_think(Entity *self);
 void player_update(Entity *self);
+void init_weapon_data(Entity *self);
 
 Entity *player_new(Vector3D position)
 {
@@ -28,11 +29,7 @@ Entity *player_new(Vector3D position)
     ent->hidden = 0;
     //set up starting weapons
     ent->weapon = revolver;
-    ent->revolverAmmo = 24;
-    ent->repeaterAmmo = 36;
-    ent->shotgunShells = 12;
-    ent->sticksDynamite = 3;
-    ent->throwingKnives = 5;
+    init_weapon_data(ent);
 
     return ent;
 }
@@ -128,6 +125,43 @@ void player_update(Entity *self)
     }
     gf3d_camera_set_position(position);
     gf3d_camera_set_rotation(rotation);
+}
+
+void init_weapon_data(Entity *self){
+    if(!self){
+        slog("No player, cannot initialize weapons");
+        return;
+    }
+
+    self->weaponData.revolverAmmo = 24;
+    self->weaponData.revolverCap = 6;
+    self->weaponData.revolverMax = 60;
+    self->weaponData.revolverRate = 10;
+    self->weaponData.revolverCurrent = 6;
+
+    self->weaponData.repeaterAmmo = 36;
+    self->weaponData.repeaterCap = 12;
+    self->weaponData.repeaterMax = 120;
+    self->weaponData.repeaterRate = 5;
+    self->weaponData.repeaterCurrent = 12;
+
+    self->weaponData.shotgunShells = 12;
+    self->weaponData.shotgunCap = 2;
+    self->weaponData.shotgunMax = 30;
+    self->weaponData.shotgunRate = 15;
+    self->weaponData.shotgunCurrent = 2;
+
+    self->weaponData.sticksDynamite = 5;
+    self->weaponData.dynamiteCap = 1;
+    self->weaponData.dynamiteMax = 10;
+    self->weaponData.dynamiteRate = 5;
+    self->weaponData.dynamiteCurrent = 1;
+
+    self->weaponData.throwingKnives = 5;
+    self->weaponData.knivesCap = 1;
+    self->weaponData.knivesMax = 10;
+    self->weaponData.knivesRate = 5;
+    self->weaponData.knivesCurrent = 1;
 }
 
 /*eol@eof*/

@@ -5,7 +5,8 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "/usr/include/SDL2",
-                "${workspaceFolder}/gfc/simple_logger/include"
+                "${workspaceFolder}/gfc/simple_logger/include",
+                "${workspaceFolder}/gfc/include"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",

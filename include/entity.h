@@ -6,6 +6,7 @@
 #include "gfc_primitives.h"
 
 #include "gf3d_model.h"
+#include "weapon.h"
 
 typedef enum
 {
@@ -14,15 +15,6 @@ typedef enum
     ES_dead,
     ES_attack
 }EntityState;
-
-typedef enum{
-    revolver = 0,
-    repeater,
-    shotgun,
-    dynamite,
-    throwing_knife
-}PlayerWeapon;
-
 
 typedef struct Entity_S
 {
@@ -43,6 +35,7 @@ typedef struct Entity_S
     void       (*draw)(struct Entity_S *self); /**<pointer to an optional extra draw funciton*/
     void       (*onDamage)(struct Entity_S *self, float damage, struct Entity_S *inflictor); /**<pointer to the think function*/
     void       (*onDeath)(struct Entity_S *self); /**<pointer to an funciton to call when the entity dies*/
+    //collision and deal damage functions
     
     EntityState state;
     
@@ -59,17 +52,7 @@ typedef struct Entity_S
 
     //related to player loadout
     PlayerWeapon weapon;
-    Uint32 revolverAmmo;
-    Uint32 repeaterAmmo;
-    Uint32 shotgunShells;
-    Uint32 sticksDynamite;
-    Uint32 throwingKnives;
-    
-    Uint32 revolverCap;
-    Uint32 repeaterCap;
-    Uint32 shotgunCap;
-    Uint32 dynamiteCap;
-    Uint32 knivesCap;
+    WeaponData weaponData;
     
     void *customData;   /**<IF an entity needs to keep track of extra data, we can do it here*/
 }Entity;

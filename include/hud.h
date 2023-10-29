@@ -1,3 +1,6 @@
+#ifndef __HUD_H__
+#define __HUD_H__
+
 #include <SDL.h>
 #include "entity.h"
 #include "gf2d_sprite.h"
@@ -11,8 +14,4 @@
 */
 void draw_hud(Entity* player);
 
-/**
- * @brief Redraws heads up display if player takes damage, heals, or swaps a weapon
- * @param player is the player entity
-*/
-void update_hud(Entity* player);
+#endif
